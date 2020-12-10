@@ -1,0 +1,82 @@
+---- Minecraft Crash Report ----
+// Surprise! Haha. Well, this is awkward.
+
+Time: 12/10/20, 6:00 PM
+Description: Registering texture
+
+java.lang.NullPointerException: Cannot invoke "net.minecraft.util.ResourceLocation.getResourceDomain()" because "p_110536_1_" is null
+	at net.minecraft.client.resources.SimpleReloadableResourceManager.getResource(SimpleReloadableResourceManager.java:60)
+	at net.minecraft.client.renderer.texture.SimpleTexture.loadTexture(SimpleTexture.java:34)
+	at net.minecraft.client.renderer.texture.TextureManager.loadTexture(TextureManager.java:83)
+	at net.minecraft.client.renderer.texture.TextureManager.bindTexture(TextureManager.java:50)
+	at me.gergoo007.velocity.ui.screen.MainMenu.initGui(MainMenu.java:18)
+	at net.minecraft.client.gui.GuiScreen.setWorldAndResolution(GuiScreen.java:537)
+	at net.minecraft.client.Minecraft.displayGuiScreen(Minecraft.java:1002)
+	at net.minecraft.client.Minecraft.startGame(Minecraft.java:564)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:393)
+	at net.minecraft.client.main.Main.main(Main.java:114)
+	at Start.main(Start.java:11)
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Stacktrace:
+	at net.minecraft.client.resources.SimpleReloadableResourceManager.getResource(SimpleReloadableResourceManager.java:60)
+	at net.minecraft.client.renderer.texture.SimpleTexture.loadTexture(SimpleTexture.java:34)
+
+-- Resource location being registered --
+Details:
+	Resource location: ~~NULL~~
+	Texture object class: net.minecraft.client.renderer.texture.SimpleTexture
+Stacktrace:
+	at net.minecraft.client.renderer.texture.TextureManager.loadTexture(TextureManager.java:83)
+	at net.minecraft.client.renderer.texture.TextureManager.bindTexture(TextureManager.java:50)
+	at me.gergoo007.velocity.ui.screen.MainMenu.initGui(MainMenu.java:18)
+	at net.minecraft.client.gui.GuiScreen.setWorldAndResolution(GuiScreen.java:537)
+	at net.minecraft.client.Minecraft.displayGuiScreen(Minecraft.java:1002)
+	at net.minecraft.client.Minecraft.startGame(Minecraft.java:564)
+
+-- Initialization --
+Details:
+Stacktrace:
+	at net.minecraft.client.Minecraft.run(Minecraft.java:393)
+	at net.minecraft.client.main.Main.main(Main.java:114)
+	at Start.main(Start.java:11)
+
+-- System Details --
+Details:
+	Minecraft Version: 1.8
+	Operating System: Windows 10 (amd64) version 10.0
+	Java Version: 14.0.2, Oracle Corporation
+	Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode, sharing), Oracle Corporation
+	Memory: 906236928 bytes (864 MB) / 1073741824 bytes (1024 MB) up to 1073741824 bytes (1024 MB)
+	JVM Flags: 3 total; -XX:+ShowCodeDetailsInExceptionMessages -Xmx1024M -Xms1024M
+	IntCache: cache: 0, tcache: 0, allocated: 0, tallocated: 0
+	Launched Version: mcp
+	LWJGL: 2.9.1
+	OpenGL: Radeon RX 560 Series GL version 4.6.14736 Compatibility Profile Context 20.11.1 27.20.12033.2007, ATI Technologies Inc.
+	GL Caps: Using GL 1.3 multitexturing.
+Using GL 1.3 texture combiners.
+Using framebuffer objects because OpenGL 3.0 is supported and separate blending is supported.
+Shaders are available because OpenGL 2.1 is supported.
+VBOs are available because OpenGL 1.5 is supported.
+
+	Using VBOs: No
+	Is Modded: Very likely; Jar signature invalidated
+	Type: Client (map_client.txt)
+	Resource Packs: []
+	Current Language: English (US)
+	Profiler Position: N/A (disabled)
+	OptiFine Version: OptiFine_1.8_HD_U_H6
+	Render Distance Chunks: 12
+	Mipmaps: 4
+	Anisotropic Filtering: 1
+	Antialiasing: 0
+	Multitexture: false
+	Shaders: null
+	OpenGlVersion: 4.6.14736 Compatibility Profile Context 20.11.1 27.20.12033.2007
+	OpenGlRenderer: Radeon RX 560 Series
+	OpenGlVendor: ATI Technologies Inc.
+	CpuCount: 4
