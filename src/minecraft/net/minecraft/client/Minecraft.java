@@ -326,6 +326,11 @@ public class Minecraft implements IThreadListener, IPlayerUsage
     private final Thread mcThread = Thread.currentThread();
     private ModelManager modelManager;
     private BlockRendererDispatcher field_175618_aM;
+    
+    /**
+     * true if f3 is released AND no other key is pressed
+     */
+    static boolean cancelDebugOverlay = false;
 
     /**
      * Set to true to keep the game loop running. Set to false by shutdown() to allow the game loop to exit cleanly.
@@ -1913,6 +1918,7 @@ public class Minecraft implements IThreadListener, IPlayerUsage
                 }
                 else if (Keyboard.isKeyDown(46) && Keyboard.isKeyDown(61))
                 {
+                	cancelDebugOverlay = true;
                     this.debugCrashKeyPressTime = getSystemTime();
                 }
 
@@ -1938,82 +1944,108 @@ public class Minecraft implements IThreadListener, IPlayerUsage
 
                         if (var1 == 32 && Keyboard.isKeyDown(61) && this.ingameGUI != null)
                         {
+                        	cancelDebugOverlay = true;
                             this.ingameGUI.getChatGUI().clearChatMessages();
+                            cancelDebugOverlay = false;
                         }
 
                         if (var1 == 31 && Keyboard.isKeyDown(61))
                         {
+                        	cancelDebugOverlay = true;
                             this.refreshResources();
+                            cancelDebugOverlay = false;
                         }
 
                         if (var1 == 17 && Keyboard.isKeyDown(61))
                         {
-                            ;
+                        	cancelDebugOverlay = true;
+                        	cancelDebugOverlay = false;
                         }
 
                         if (var1 == 18 && Keyboard.isKeyDown(61))
                         {
-                            ;
+                        	cancelDebugOverlay = true;
+                        	cancelDebugOverlay = false;
                         }
 
                         if (var1 == 47 && Keyboard.isKeyDown(61))
                         {
-                            ;
+                        	cancelDebugOverlay = true;
+                        	cancelDebugOverlay = false;
                         }
 
                         if (var1 == 38 && Keyboard.isKeyDown(61))
                         {
-                            ;
+                        	cancelDebugOverlay = true;
+                        	cancelDebugOverlay = false;
                         }
 
                         if (var1 == 22 && Keyboard.isKeyDown(61))
                         {
-                            ;
+                        	cancelDebugOverlay = true;
+                        	cancelDebugOverlay = false;
                         }
 
                         if (var1 == 20 && Keyboard.isKeyDown(61))
                         {
+                        	cancelDebugOverlay = true;
                             this.refreshResources();
+                            cancelDebugOverlay = false;
                         }
 
                         if (var1 == 33 && Keyboard.isKeyDown(61))
                         {
+                        	cancelDebugOverlay = true;
                             boolean var11 = Keyboard.isKeyDown(42) | Keyboard.isKeyDown(54);
                             this.gameSettings.setOptionValue(GameSettings.Options.RENDER_DISTANCE, var11 ? -1 : 1);
+                            cancelDebugOverlay = false;
                         }
 
                         if (var1 == 30 && Keyboard.isKeyDown(61))
                         {
+                        	cancelDebugOverlay = true;
                             this.renderGlobal.loadRenderers();
+                            cancelDebugOverlay = false;
                         }
 
                         if (var1 == 35 && Keyboard.isKeyDown(61))
                         {
+                        	cancelDebugOverlay = true;
                             this.gameSettings.advancedItemTooltips = !this.gameSettings.advancedItemTooltips;
                             this.gameSettings.saveOptions();
+                            cancelDebugOverlay = false;
                         }
 
                         if (var1 == 48 && Keyboard.isKeyDown(61))
                         {
+                        	cancelDebugOverlay = true;
                             this.renderManager.func_178629_b(!this.renderManager.func_178634_b());
+                            cancelDebugOverlay = false;
                         }
 
                         if (var1 == 25 && Keyboard.isKeyDown(61))
                         {
+                        	cancelDebugOverlay = true;
                             this.gameSettings.pauseOnLostFocus = !this.gameSettings.pauseOnLostFocus;
                             this.gameSettings.saveOptions();
+                            cancelDebugOverlay = false;
                         }
 
                         if (var1 == 59)
                         {
+                        	cancelDebugOverlay = true;
                             this.gameSettings.hideGUI = !this.gameSettings.hideGUI;
+                            cancelDebugOverlay = false;
                         }
 
+                        /*
+                        // TODO: DEBUG
                         if (var1 == 61)
                         {
                             this.gameSettings.showDebugInfo = !this.gameSettings.showDebugInfo;
                             this.gameSettings.showDebugProfilerChart = GuiScreen.isShiftKeyDown();
                         }
+                        */
 
                         if (this.gameSettings.keyBindTogglePerspective.isPressed())
                         {
@@ -2054,6 +2086,13 @@ public class Minecraft implements IThreadListener, IPlayerUsage
                                 this.updateDebugProfilerName(var12 + 1);
                             }
                         }
+                    }
+                } else {
+                	// TODO: DEBUG
+                    if(Keyboard.getEventKey() == Keyboard.KEY_F3 && !cancelDebugOverlay) {
+                    	this.gameSettings.showDebugInfo = !this.gameSettings.showDebugInfo;
+                    	this.gameSettings.showDebugProfilerChart = true;
+                    	cancelDebugOverlay = false;
                     }
                 }
             }

@@ -120,7 +120,7 @@ public class RenderPlayer extends RendererLivingEntity
 
     public void func_82422_c()
     {
-        GlStateManager.translate(0.0F, 0.1875F, 0.0F);
+         // GlStateManager.translate(0.0F, 0.1875F, 0.0F);
     }
 
     /**

@@ -1271,6 +1271,7 @@ public class GameSettings
 
         try
         {
+        	// TODO: PRINTWRITER
             PrintWriter var9 = new PrintWriter(new FileWriter(this.optionsFile));
             var9.println("invertYMouse:" + this.invertMouse);
             var9.println("mouseSensitivity:" + this.mouseSensitivity);
@@ -1327,6 +1328,7 @@ public class GameSettings
             var9.println("forceUnicodeFont:" + this.forceUnicodeFont);
             var9.println("allowBlockAlternatives:" + this.field_178880_u);
             var9.println("reducedDebugInfo:" + this.field_178879_v);
+            var9.close();
             KeyBinding[] var2 = this.keyBindings;
             int var3 = var2.length;
             int var4;
